@@ -1,0 +1,2 @@
+[ubuntu_servers]
+ubuntu_linux ansible_host=16.171.34.48

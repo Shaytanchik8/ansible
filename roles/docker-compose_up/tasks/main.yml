@@ -1,0 +1,23 @@
+---
+# tasks file for docker-compose_up
+- block:
+    - name: install docker from Ubuntu
+      apt:
+        name:
+          - docker.io
+          - docker-compose
+        state: present
+        update_cache: yes
+  when: ansible_os_family == "Debian"
+
+
+- name: copy docker-compose file 
+  template:
+    src: docker-compose.j2
+    dest: docker-compose.yml
+
+- name: run container
+  docker_compose:
+    project_src: /home/ubuntu/
+    state: present
+    files: docker-compose.yml

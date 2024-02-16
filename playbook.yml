@@ -1,0 +1,8 @@
+---
+- name: install docker
+  hosts:  
+    - ubuntu_servers
+  become: yes
+
+  roles:
+    - docker-compose_up

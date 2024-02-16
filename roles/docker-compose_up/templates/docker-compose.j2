@@ -1,0 +1,22 @@
+version: "3"
+services:
+  nginx:
+    image: shaytanchik/nginx-image:{{ teg }}
+    container_name: test-container
+    ports:
+      - '443:443'
+      - '80:80'
+    depends_on:
+      - apache
+    networks:
+      - mynetwork
+  apache:
+    image: shaytanchik/apache-image:{{ teg }}
+    container_name: test-containerA
+    ports:
+      - '8080:8080'
+    networks:
+      - mynetwork
+networks:
+  mynetwork:
+    driver: bridge
